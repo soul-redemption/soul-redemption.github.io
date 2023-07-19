@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="zh">
+  
+<script src="/libs/jquery.min.js"></script>
+
+  <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  
+  <title>赚钱的底层逻辑是什么？ - 救赎之道就在其中</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  
+  <meta name="keywords" content=杂谈>
+  
+    <meta name="description" content="欢迎你的到来">
+  
+  
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.02">
+  
+  
+    <link rel="alternate" href="/atom.xml " title="救赎之道就在其中" type="application/atom+xml">
+  
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+        
+<link rel="stylesheet" href="/js/fancybox/jquery.fancybox.min.css">
+
+    
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <script src="/js/Valine.min.1.3.10.js"></script>
+    <div class="container">
+        <div class="test">
+            
+<div class="test">
+    <ol class="breadcrumb">
+            
+<script src="/libs/jquery.min.js"></script>
+
+            
+<script src="/js/search.js"></script>
+
+            
+                <form class="site-search-form">
+                    <i class="fa fa-search" id="search-logo"><input type="text" id="local-search-input" class="st-search-input" /></i>
+                </form>
+                <div id="local-search-result" class="local-search-result-cls"></div>
+            
+            <script type="text/javascript" id="local.search.active">
+                var inputArea       = document.querySelector("#local-search-input");
+                var getSearchFile = function(){
+                    var path = "/search.xml";
+                    searchFunc(path, 'local-search-input', 'local-search-result');
+                }
+                inputArea.onfocus = function(){ getSearchFile() }
+
+                var $resetButton = $("#search-form .fa-times");
+                var $resultArea = $("#local-search-result");
+
+                inputArea.oninput = function(){ $resetButton.show(); }
+                resetSearch = function(){
+                    $resultArea.html("");
+                    document.querySelector("#search-form").reset();
+                    $resetButton.hide();
+                    $(".no-result").hide();
+                }
+                inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+                //No search result
+                $resultArea.bind("DOMNodeRemoved DOMNodeInserted", function(e) {
+                    if (!$(e.target).text()) {
+                        $(".no-result").show(100);
+                    } else {
+                        $(".no-result").hide();
+                    }
+                })
+            </script>
+
+    </ol>
+    <hr>
+</div>
+        </div>
+      
+<script src="/libs/jquery.min.js"></script>
+
+<header class="header">
+  <div class="blog-title">
+    <a href="/" class="logo">救赎之道就在其中</a>
+    <div class="subtitle">救赎</div>
+  </div>
+  <nav class="navbar">
+    <ul class="menu">
+      
+        <li class="menu-item">
+          <a href="/" class="menu-item-link">主页</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="/archives" class="menu-item-link">归档</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="/categories" class="menu-item-link">分类</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="/tags" class="menu-item-link">标签</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="/about" class="menu-item-link">🧒🏻关于我</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="/atom.xml" class="menu-item-link">RSS</a>
+        </li>
+      
+    </ul>
+  </nav>
+</header>
+
+<!-- 文章目录 -->
+<!-- 文章详情页右侧目录 -->
+
+  <div class="toc-aside">
+    <div class="toc-main">
+      <div class="toc-aside-title">
+        <i class="fa fa-bars" aria-hidden="true"></i><span>本文目录</span>
+        
+          <div class="toc-open-close">本文目录</div>
+        
+      </div>
+      <div class="toc-content">
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 手机端目录按钮 -->
+  <div id="toc-mobile-btn">
+    <i class="fa fa-bars" aria-hidden="true"></i>
+  </div>
+  <!-- js在scripts目录下的的toc.ejs里面 -->
+  
+
+  <script>
+    function openBtnClickFn () {
+      let openOrCloseBtn = $('.toc-aside .toc-aside-title .toc-open-close');
+      let open = eval('' || 'true');
+      openOrCloseBtn.click(function() {
+        if (open === true) {
+          $(".toc-aside").css({'width': 0, 'padding': 0});
+          $(".toc-content").css({'width': 0});
+          $(".toc-aside-title span, .toc-aside-title i").css({'display': 'none'});
+//           $(".posts").css({'width': '75%', 'margin': '10px auto'});
+          open = false;
+          $(".current-type").css({'display': 'none'});
+        } else {
+          $(".toc-aside").css({'width': '300px', 'padding': '0 10px'});
+          $(".toc-content").css({'width': '300px'});
+          $(".toc-aside-title span, .toc-aside-title i").css({'display': 'inline-block'});
+//           $(".posts").css({'width': '60%', 'margin-right': '10px', 'margin-left': 'calc(40% - 400px)'});
+          open = true;
+           $(".current-type").css({'display': 'block'});
+        }
+      });
+    };
+    openBtnClickFn();
+    document.addEventListener('pjax:complete', function () {
+      openBtnClickFn();
+    })
+
+  </script>
+
+<div class="current-type">
+</div>
+<div class="posts">
+
+  <div class="post-title">
+    <h1 class="article-title">赚钱的底层逻辑是什么？</h1>
+  </div>
+
+    <span class="post-time" style="color:#646060;font-size:13px">本篇最后更新于 - 2023-07-17</span>
+  </div>
+  <div class="post-meta">
+
+    <article class="post post-detail">
+        <div class="post-content">
+            <h1 id="赚钱的底层逻辑是什么？"><a href="#赚钱的底层逻辑是什么？" class="headerlink" title="赚钱的底层逻辑是什么？"></a>赚钱的底层逻辑是什么？</h1><h2 id="1、底层赚钱靠体力"><a href="#1、底层赚钱靠体力" class="headerlink" title="1、底层赚钱靠体力"></a>1、底层赚钱靠体力</h2><p>​        这个不用多说，我想大多数人都体验过靠体力赚钱的滋味。 不过你还别说，现在体力的价格是越来越高了。当然，也得看在哪里干，不同地方的体力价格肯定是不一样的，以及体力活儿的强度，理论上讲，越辛苦的体力活，价格也越高。比如在工地干活儿，平均都是好几百一天，如果天天有活儿干，比很多小白领赚得都多。 但用体力换钱，不必多说，属于高风险低收益。干体力活儿风险很多，比如对身体的损耗，意外工伤，三天两头接不到活儿，甚至辛辛苦苦干了一年结果工资都拿不到，等等风险。 而最大的风险当然是被机器取代的职业危机，理论上讲，但凡是重复性机械化操作的体力工作，都可以被机器取代，不过是时间问题。当然，现在也不用担心，因为这是一个循序渐进的过程，需要满足很多客观条件才能做到，不可能一下子就都替代了。 </p>
+<h2 id="2、下层赚钱靠技能"><a href="#2、下层赚钱靠技能" class="headerlink" title="2、下层赚钱靠技能"></a>2、下层赚钱靠技能</h2><p>​        俗话说“天干饿不死手艺人”，这个手艺也就是技能或技术（注意，并不是指那种科学界的国家级的高精尖技术，而是指一般人通过大量练习所能掌握的专业技能）。如果说体力活是看天吃饭很不稳定，那么靠技能则是看技术吃饭，更为稳定。 靠技能赚钱，赚钱的多少与技能的专业程度成正比。比如，一流的发型师和三流的发型师，一流的程序员与三流的程序员，赚的钱肯定不是一个级别的。 技能或说技术，是用来干嘛的？当然是用来解决问题的。说到这里，其实你会发现，体力活儿不是技术活儿，但技术活儿却大都是体力活儿。 会计师、发型师、摄影师、程序员、修理工、厨师……等等，他们都是拥有一项专业技能的手艺人，但是他们轻松吗？并不，只能说，他们在辛苦的同时，赚到的钱平均来说肯定是比干体力活儿要多的，收入更加稳定，而且相对体力活儿来讲，工作得更为体面。 但其实你还能发现，哪怕是靠技能赚钱，也会面临被人工智能替代的职业危机。虽说目前的人工智能约等于人工智障，但是回顾历史你就明白，千万不能小瞧科技的力量。那些我们现在想起来就觉得天方夜谭的事，正在以我们不可思议的方式逐渐变成现实。 不过也真不用焦虑，它不能一蹴而就，人工智能距离大规模应用还很遥远。如上所说，它不仅得满足技术条件，还得满足可商业化可落地，以及能兼顾社会存在的客观条件，方能实施。 </p>
+<h2 id="3、中层赚钱靠能力"><a href="#3、中层赚钱靠能力" class="headerlink" title="3、中层赚钱靠能力"></a>3、中层赚钱靠能力</h2><p>技能和能力有什么区别？答案是：能力包括技能在内，但技能它就是单纯的指某一项技术。而能力，它是个包含挺多东西的词。 为什么说中层赚钱靠能力？因为处在这一层的人，他不仅具备某项甚至多项专业技能，还具备相比技能而言更难获取和驾驭的一些综合能力。比如团队管理能力，项目管理能力，高情商、高智商、高抗压能力等等。 那么中层是怎么靠能力赚钱的？其实中层虽然赚得不少，但也不过是给公司老板打工而已，带领团队完成公司的目标业绩，然后获取一定的报酬。只是中层赚得更多些，身份地位更加体面。 那么中层有没有职业危机呢？答案是肯定的，而且中层其实是最为焦虑的一个层级。虽然中层干的工作不大可能被人工智能取代，毕竟他们每天面对的都是一系列新兴且复杂的问题，还得与各种各样复杂的人打交道。 但是，中层这个层级的人，本身对自身生活质量要求较高。别看他们赚得多，但若除去高额的房贷车贷，对子女进行精英教育所花的高额费用，再算上父母的养老，还得维持自身一定质量的生活水平，净值可能都为负数。 而作为一个中层管理者，是要为公司的业绩增长负责的。如果业绩不达标，老板有的是功夫换个人来顶替。而中层到了中年，往往面临着更大的职业危机。 一方面职位难以往上升，绝大多数中层管理人员的职业生涯止步于中层，再往上走一层可谓蜀道之难。一方面自身岁数上来了，论精力论智力论能耐论性价比，难与后浪争锋，这便是中层最大的焦虑之处。 </p>
+<h2 id="4、上层赚钱靠模式"><a href="#4、上层赚钱靠模式" class="headerlink" title="4、上层赚钱靠模式"></a>4、上层赚钱靠模式</h2><p>你发现了吗？以上所说的三种赚钱方式不同的人，都有一个共同点：他们都得去工作才能赚到钱，如果不工作（或者说非工作的时间里）他们就赚不到钱。（别拿副业来抬杠，副业还不是你得去做才能赚钱，你不做的时候呢？） 所以为什么他们都比较焦虑？就是因为他们一旦停下来，就没有了收入。 而上层赚钱靠模式，则不会有那种担忧。因为靠模式赚钱，可以实现睡后收入。即你的模式一旦跑起来，哪怕你不工作的时间，你的模式也能给你带来收入。 我举个栗子，假如你是一个作家，你写了一本畅销书。那么这本书会在你未来即使不工作的时候，也会给你带来源源不断的版权收入，前提是得畅销。但是作家的门槛还是挺高的，这对普通人来说不太现实。 再比如说，你做自媒体，甭管你是做视频自媒体还是做图文自媒体又或者音频自媒体。只要你的模式跑通了——即你创作的内容有人喜欢看。那么你持续发布的内容就会源源不断地在网上获得曝光，即使在你睡觉的时候，你的作品也会被很多人观看，从而为你带来收益。 又比如你操盘一个模式已成熟的项目，只要把各个端口把控好，这个项目就会像自行车的链条一样循环转动。当你的项目模式形成了闭环，那么它就能不停歇地为你运转。 用模式赚钱，你的一份时间或者说一份成果，可以一对多且长期出售，所以才能实现非工作时间也能带来收益。你再想想前三种赚钱方式，虽然单位时间内的产值各有高低，呈两极分化（赚得少的特别少，赚得多的特别多），但是那三种方式都是把一份时间一次性出售，只不过单价有高有低罢了，但本质相同。 </p>
+<h2 id="5、顶层赚钱靠系统"><a href="#5、顶层赚钱靠系统" class="headerlink" title="5、顶层赚钱靠系统"></a>5、顶层赚钱靠系统</h2><p>如果说靠模式赚钱能够实现睡后收入已经足够令人心潮澎湃，那么靠系统赚钱则是赚钱之道的终极追求。 首先我们来看什么是系统。中国著名学者钱学森认为： 系统是由相互作用相互依赖的若干组成部分结合而成的，具有特定功能的有机整体。 所谓靠系统赚钱，就是要建立起自己的赚钱系统。这个赚钱系统就是由相互作用相互依赖的不同部分组成，它也是一个具有特定功能的有机整体。 你想到了什么？对，公司就是这样的系统。而公司里的各个部门，则是一个个子系统，就是相互作用相互依赖的不同组成部分。公司的特定功能，要么提供产品，要么提供服务。 那么如何才能建立起这个赚钱系统？ 核心并不是钱，当然钱是必不可少的。核心是上边刚讲的——模式。公司其实是一个围绕其商业模式来进行运作、通过价值交换来获取收益的有机整体。 换句话说，如果你已经有了成熟的可盈利的模式，那么你只需慢慢把雪球滚起来，把模式放大操作，对每一个环节进行精细化运作，那么自然就形成了系统。 注意，本文所说的赚钱系统和赚钱模式的区别在于： 模式是把你的一份时间长时间内进行多次出售，而系统则是你买断别人的时间，让别人把你成熟的模式进行多次复制，然后连续不断地出售给更多的人。二者是加法和乘法的区别。 </p>
+<h2 id="6、本质是什么-？"><a href="#6、本质是什么-？" class="headerlink" title="6、本质是什么 ？"></a>6、本质是什么 ？</h2><p>写到这里，请各位看官再次注意，并不是说层次低就等于赚钱少，这里说的层级不仅是指阶层，还指赚钱的效率效益，并不是以单一的赚钱多少来分层的。 综上，你能从这5种赚钱方式中发现什么？ </p>
+<p>总结一下： </p>
+<ol>
+<li>赚钱的本质，是基于信任的价值交换。 </li>
+<li>而赚钱的多少，在于交换量的多寡。</li>
+<li>而交换量的多寡，取决于是否有模式和系统，以及模式和系统的优劣程度。</li>
+</ol>
+<p> 最后，你会发现，只要你摆脱了底层赚钱方式，即但凡你有一技之长，那么你就可以将你的一技之长用模式和系统放大出售给更多人。 不要担心客源，还是那句话：以中国人口基数之大，随便一个小众领域都聚集着大量人口。 举个典型例子：秋叶PPT，应该很多人听说过。你看，人就是从一个PPT技能为起点和核心，慢慢打磨出自己的模式，然后建立系统将他的PPT技能放大出售给更多人。 最后的最后，如果你仍然对赚钱这件事存有困惑，那么请反思4点：你有什么，你会什么？你能提供什么价值，你能解决什么问题？想通之后再出发，相信你定能越行越远。</p>
+
+        </div>
+    </article>
+
+      <div class="post-footer">
+        
+          <ul class="post-tag-list" itemprop="keywords"><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a><span class="post-tag-list-count">2</span></li></ul>
+        
+        
+         <ul class="post-category-list"><li class="post-category-list-item"><a class="post-category-list-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a><span class="post-category-list-count">2</span></li></ul>
+        
+        <a href="#top" class="top">返回顶部</a>
+      </div>
+
+      <!-- 图片放大 Wrap images with fancybox support -->
+      <script src="/js/wrapImage.js"></script>
+
+</div>
+
+<!-- 评论插件 -->
+<footer>
+  &copy; 2023
+  <span class="author">
+    松泓
+  </span>
+</footer>
+      <!--     <script src="https://cdn.bootcdn.net/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script> -->
+          <!-- 文章目录 -->
+          <link href="/js/tocbot/tocbot.css" rel="stylesheet">
+<script src="/js/tocbot/tocbot.min.js"></script>
+
+<script>
+  var headerEl = 'h1, h2, h3, h4, h5, h6',  //headers
+    content = '.post-detail',//文章容器
+    idArr = {};  //标题数组以确定是否增加索引id
+  //add #id
+  var option = {
+    // Where to render the table of contents.
+    tocSelector: '.toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: content,
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: headerEl,
+    scrollSmooth: true,
+    scrollSmoothOffset: 0,
+    headingsOffset: ($(window).height()),
+    positionFixedSelector: '.toc-main',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    activeLinkClass: 'is-active-link',
+    // onClick: function (e) {},
+  }
+  if ($('.toc').length > 0) {
+
+    $(content).children(headerEl).each(function () {
+      //去除空格以及多余标点
+      var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+
+      headerId = headerId.toLowerCase();
+      if (idArr[headerId]) {
+        //id已经存在
+        $(this).attr('id', headerId + '-' + idArr[headerId]);
+        idArr[headerId]++;
+      }
+      else {
+        //id未存在
+        idArr[headerId] = 1;
+        $(this).attr('id', headerId);
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      tocbot.init(option);
+      mobileTocClick();
+    });
+
+  }
+
+  window.tocScrollFn = function () {
+    return bamboo.throttle(function () {
+      findHeadPosition();
+    }, 100)()
+  }
+  window.addEventListener('scroll', tocScrollFn);
+
+  const findHeadPosition = function (top) {
+    if ($('.toc-list').length <= 0) {
+      return false;
+    }
+    setTimeout(() => {  // or DOMContentLoaded
+      autoScrollToc();
+    }, 0);
+  }
+
+  const autoScrollToc = function () {
+    const $activeItem = document.querySelector('.is-active-link');
+    const $cardToc = document.querySelector('.toc-content');
+    const activePosition = $activeItem.getBoundingClientRect().top
+    const sidebarScrollTop = $cardToc.scrollTop
+    if (activePosition > (document.documentElement.clientHeight - 100)) {
+      $cardToc.scrollTop = sidebarScrollTop + 150
+    }
+    if (activePosition < 100) {
+      $cardToc.scrollTop = sidebarScrollTop - 150
+    }
+  }
+
+  document.addEventListener('pjax:send', function () {
+    if ($('.toc').length) {
+      tocbot.destroy();
+    }
+  });
+
+  document.addEventListener('pjax:complete', function () {
+    if ($('.toc').length) {
+      tocbot.init(option);
+      mobileTocClick();
+    }
+  });
+
+  // 手机端toc按钮点击出现目录
+  const mobileTocClick = function () {
+    const $cardTocLayout = document.getElementsByClassName('toc-aside')[0];
+    const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0];
+    let right = '45px';
+    if (window.innerWidth >= 551 && window.innerWidth <= 992) {
+      right = '100px'
+    }
+    const mobileToc = {
+      open: () => {
+        $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: ' + right
+      },
+
+      close: () => {
+        $cardTocLayout.style.animation = 'toc-close .2s'
+        setTimeout(() => {
+          $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
+        }, 100)
+      }
+    }
+    document.getElementById('toc-mobile-btn').addEventListener('click', () => {
+      if (window.getComputedStyle($cardTocLayout).getPropertyValue('opacity') === '0') mobileToc.open()
+      else mobileToc.close()
+    })
+
+    $cardToc.addEventListener('click', (e) => {
+      if (window.innerWidth < 992) { // 小于992px的时候
+        mobileToc.close()
+      }
+    })
+  }
+</script>
+
+<style>
+  .is-position-fixed {
+    position: sticky !important;
+    top: 74px;
+  }
+
+  .toc-main ul {
+    counter-reset: show-list;
+  }
+
+  .toc-main ul li::before {
+    content: counter(item)".";
+    display: block;
+    position: absolute;
+    left: 12px;
+    top: 0;
+  }
+</style>
+          <script src="/js/utils/index.js"></script>
+          <!-- 图片放大 -->
+          
+            <script src="/js/fancybox/jquery.fancybox.min.js"></script>
+          
+          <!-- 图片懒加载 -->
+          <script defer src="/libs/vanilla-lazyload-17.8.3-lazyload.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+          <!-- 渲染回到顶部按钮 -->
+            
+              
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+<div class="goTop top-btn-color" pointer>
+  <i class="fa fa-arrow-up" aria-hidden="true"></i>
+</div>
+<script src="/js/goTop.js"></script>
+
+            
+          <!-- 渲染暗黑按钮 -->
+            
+              <div class="dark">
+  <div class="dark-content">
+    <i class="fa fa-adjust" aria-hidden="true"></i>
+    <!-- <span>关灯</span> -->
+  </div>
+  
+</div>
+
+<script>
+  $(function() {
+    let isDark = JSON.parse(localStorage.getItem('dark'))  || JSON.parse('false');
+    if (isDark) {
+      $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fa fa-adjust" aria-hidden="true"></i>
+          </div>
+          `
+        );
+    }
+    $('.dark').click(function() {
+      if ($(document.body).is('.darkModel')) {
+        $(document.body).removeClass('darkModel');
+        localStorage.setItem('dark', false);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fa fa-adjust" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      } else {
+        $(document.body).addClass('darkModel');
+        localStorage.setItem('dark', true);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fa fa-adjust" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      }
+    })
+  })
+</script>
+            
+          <!-- 背景彩带 -->
+          
+    </div>
+  </body>
+</html>

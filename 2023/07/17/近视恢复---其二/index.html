@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="zh">
+  
+<script src="/libs/jquery.min.js"></script>
+
+  <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  
+  <title>近视恢复---其二 - 救赎之道就在其中</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  
+  <meta name="keywords" content=近视恢复>
+  
+    <meta name="description" content="欢迎你的到来">
+  
+  
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.02">
+  
+  
+    <link rel="alternate" href="/atom.xml " title="救赎之道就在其中" type="application/atom+xml">
+  
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+        
+<link rel="stylesheet" href="/js/fancybox/jquery.fancybox.min.css">
+
+    
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <script src="/js/Valine.min.1.3.10.js"></script>
+    <div class="container">
+        <div class="test">
+            
+<div class="test">
+    <ol class="breadcrumb">
+            
+<script src="/libs/jquery.min.js"></script>
+
+            
+<script src="/js/search.js"></script>
+
+            
+                <form class="site-search-form">
+                    <i class="fa fa-search" id="search-logo"><input type="text" id="local-search-input" class="st-search-input" /></i>
+                </form>
+                <div id="local-search-result" class="local-search-result-cls"></div>
+            
+            <script type="text/javascript" id="local.search.active">
+                var inputArea       = document.querySelector("#local-search-input");
+                var getSearchFile = function(){
+                    var path = "/search.xml";
+                    searchFunc(path, 'local-search-input', 'local-search-result');
+                }
+                inputArea.onfocus = function(){ getSearchFile() }
+
+                var $resetButton = $("#search-form .fa-times");
+                var $resultArea = $("#local-search-result");
+
+                inputArea.oninput = function(){ $resetButton.show(); }
+                resetSearch = function(){
+                    $resultArea.html("");
+                    document.querySelector("#search-form").reset();
+                    $resetButton.hide();
+                    $(".no-result").hide();
+                }
+                inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+                //No search result
+                $resultArea.bind("DOMNodeRemoved DOMNodeInserted", function(e) {
+                    if (!$(e.target).text()) {
+                        $(".no-result").show(100);
+                    } else {
+                        $(".no-result").hide();
+                    }
+                })
+            </script>
+
+    </ol>
+    <hr>
+</div>
+        </div>
+      
+<script src="/libs/jquery.min.js"></script>
+
+<header class="header">
+  <div class="blog-title">
+    <a href="/" class="logo">救赎之道就在其中</a>
+    <div class="subtitle">救赎</div>
+  </div>
+  <nav class="navbar">
+    <ul class="menu">
+      
+        <li class="menu-item">
+          <a href="/" class="menu-item-link">主页</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="/archives" class="menu-item-link">归档</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="/categories" class="menu-item-link">分类</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="/tags" class="menu-item-link">标签</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="/about" class="menu-item-link">🧒🏻关于我</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="/atom.xml" class="menu-item-link">RSS</a>
+        </li>
+      
+    </ul>
+  </nav>
+</header>
+
+<!-- 文章目录 -->
+<!-- 文章详情页右侧目录 -->
+
+  <div class="toc-aside">
+    <div class="toc-main">
+      <div class="toc-aside-title">
+        <i class="fa fa-bars" aria-hidden="true"></i><span>本文目录</span>
+        
+          <div class="toc-open-close">本文目录</div>
+        
+      </div>
+      <div class="toc-content">
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 手机端目录按钮 -->
+  <div id="toc-mobile-btn">
+    <i class="fa fa-bars" aria-hidden="true"></i>
+  </div>
+  <!-- js在scripts目录下的的toc.ejs里面 -->
+  
+
+  <script>
+    function openBtnClickFn () {
+      let openOrCloseBtn = $('.toc-aside .toc-aside-title .toc-open-close');
+      let open = eval('' || 'true');
+      openOrCloseBtn.click(function() {
+        if (open === true) {
+          $(".toc-aside").css({'width': 0, 'padding': 0});
+          $(".toc-content").css({'width': 0});
+          $(".toc-aside-title span, .toc-aside-title i").css({'display': 'none'});
+//           $(".posts").css({'width': '75%', 'margin': '10px auto'});
+          open = false;
+          $(".current-type").css({'display': 'none'});
+        } else {
+          $(".toc-aside").css({'width': '300px', 'padding': '0 10px'});
+          $(".toc-content").css({'width': '300px'});
+          $(".toc-aside-title span, .toc-aside-title i").css({'display': 'inline-block'});
+//           $(".posts").css({'width': '60%', 'margin-right': '10px', 'margin-left': 'calc(40% - 400px)'});
+          open = true;
+           $(".current-type").css({'display': 'block'});
+        }
+      });
+    };
+    openBtnClickFn();
+    document.addEventListener('pjax:complete', function () {
+      openBtnClickFn();
+    })
+
+  </script>
+
+<div class="current-type">
+</div>
+<div class="posts">
+
+  <div class="post-title">
+    <h1 class="article-title">近视恢复---其二</h1>
+  </div>
+
+    <span class="post-time" style="color:#646060;font-size:13px">本篇最后更新于 - 2023-07-17</span>
+  </div>
+  <div class="post-meta">
+
+    <article class="post post-detail">
+        <div class="post-content">
+            <p>以下内容为参考网上方法结合自己经验摸索，根据自身实践所写的，并非转载粘贴的文字堆砌，没有别的目的，仅仅是把自己的成果与大家分享，最大的期望就是以来能对自己继续坚持视力恢复起到鞭策，二来对大家恢复视力指出一条经得起实践检验的方法。在近一年的实践中本人也积攒了一定的经验，愿与大家交流，共同提高视力！ </p>
+<blockquote>
+<p><strong>我今年22岁，眼镜度数800度，从4月份开始，用了六个月时间，眼镜度数下降了300度。亲，至于你信不信，反正我是做到了。而且预计顺利的话，年底会降到400度左右。</strong> </p>
+</blockquote>
+<hr>
+<p>四月份，结束了紧张的考研征程，偶然在网上看到一个治疗近视的帖子，帖子的主人25岁，用了1年零6个月，眼镜度数从800度降到了100度！第一反应——<strong>Holly Bullshit</strong>！ 纯属扯淡……要是都可以，怎么没见哪个医疗机构临床证明？————好吧，谁叫我也是800度呢，这二月就一篇论文坐等毕业，试试又不会死~于是一本正经的花了一个下午研究了帖子的内容，再根据其中的索引在网上也搜了相关资料，搞明白了**<font color='orange'>贝茨方法</font><strong>是如何在推</strong><font color='orange'>翻赫尔姆霍茨理论</font>** 以及自身缺陷后，在临床上得到证实并获得认可的。可是理论终归是理论，有些方法跟XXX（falungong被河蟹了）似的，全部照着来一遍，你不疯也得二了。还好，估计自己是百无聊赖，拿出了做考研阅读的精神，先&#x3D;&gt;提炼关键词——总结段义 ——理顺主干——上网荡资料补充——得出了刚才说的还算有效的方法</p>
+<p> <strong>Go ahead</strong> </p>
+<h4 id="1、不可不看的理论"><a href="#1、不可不看的理论" class="headerlink" title="1、不可不看的理论"></a>1、不可不看的理论</h4><p>近视（尤其是高度近视），眼周肌肉会丧失弹性（类似皮筋），一旦失去弹性，眼球就会逐渐凸出（研究证明，视力每下降300度，眼球凸出1毫米，也就不难解释眼镜呆久了眼睛会变形。）正常视力下眼周肌肉可以自由张弛，看近处松弛，看远处拉近，从而调节视距内物体清晰成像在视网膜上，达到完美的视力。但近视和远视就像皮筋失去弹性，前者不能收紧，后者不能放松。但正如锻炼身体肌肉原理一样，通过练习，可以使眼周肌肉强健起来，从而恢复弹性，进而恢复视力。通过系统、循序渐进的练习，逐步降低眼镜的度数，最后能将眼球压缩回正常的水平，近视就自愈了。</p>
+<p><img src="/image/v2-905fae0d6854e49c438ec857804f61c6_720w.webp" class="lazyload" data-srcset="/image/v2-905fae0d6854e49c438ec857804f61c6_720w.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p> 图1 眼部构造 </p>
+<blockquote>
+<p><strong>个人总结的5部曲</strong></p>
+</blockquote>
+<h5 id="一、清晨要做的"><a href="#一、清晨要做的" class="headerlink" title="一、清晨要做的"></a>一、清晨要做的</h5><p>1、 热敷：眼睛和太阳穴（2-3分钟） </p>
+<p>2、 用温水洗眼睛：在水中睁开眼睛做转眼睛运动，可以很好地调节屈光度，恢复视网膜屈光度（不过很多人反应在水里睁开眼睛很难受，我自己也是，由于散光只有50度，所以没下功夫坚持这项，建议大家一周能有两次就OK，实在不行也不必勉强，可以跳过此步）</p>
+<p> 3、 网上反应也可以冷敷，就是用冰块或冷水敷眼，其目的都是通过冷热变化使眼部血液循环加快，从而促进眼部血液循环。这个我尝试不多，只知道熬夜后对付黑眼圈比较有效。</p>
+<h5 id="二、进入正题——-视力恢复训练"><a href="#二、进入正题——-视力恢复训练" class="headerlink" title="二、进入正题——*视力恢复训练 *"></a>二、进入正题——*视力恢复训练 *</h5><p>1、 <font color='green'>手掌心揉眼</font>，1首歌时间OK，感觉眼部微热即可，促进眼部血液循环。 </p>
+<p>2、 <font color='green'>眼保健操 </font>，每个穴位一分钟，感觉略微酸痛即可。（一定要找准穴位，你一定不想做无用功哦<del>）可以用将食指立起来，用指尖找，一般摁到穴位上，会感到酸痛。实在不行，一定别偷懒，找个懂医学的，给你找准了</del>（我以前在视力康复中心 做治疗时，一共有9-10个穴位，其中有3-4个是专门针对散光的，比如眉心两侧的眉头处） </p>
+<p>3、<font color='green'> 视觉远近位移</font>：伸出手掌，掌心对着自己，距离在30CM处，仔细辨认手掌边缘（手上的纹理也可以，主要是可辨认的细节，这时候只看细节不需要顾及整个手掌）约15秒，然后将目光移至3-10米远处一固定目标，同样仔细辨认目标物（建议选择绿色植物），位移一个来回30秒，反复练习20次，直到感到眼周肌肉像运动完后胳膊腿的酸痛感为止，这说明达到了锻炼的效果。（有些人留言说感觉眼睛酸痛，正确方法作完地感觉是眼周围肌肉略有酸痛。如果不是，则方法有误——纠正：眼部肌肉会随远近位移收缩，略感眉头收缩是正常的，但切忌眯眼，也不要总眨眼，感觉自己把所有精力集中在眼部，） </p>
+<p>4、 <font color='green'>选择视力所及范围清晰与模糊边缘距离</font>（有些同学留言说不懂，举个简单例子，一根绳子放在看得见的最大距离就是你的视觉临界点，距离因人而异），选择一个目标，最好是视力表，闭眼后缓缓睁开，努力朝一点聚焦，感觉<strong>眼眶周围肌肉紧缩</strong>即可（这个很关键，起初做的时候不好把握，可以尝试眉头紧锁 ，若是有肌肉收缩的感觉就对了，否则就是前面提到的误区——眼睛酸痛，而非眼周围肌肉），紧锁约10-15秒，然后瞬间松开（久而久之会发现一瞬间眼前清晰感，大概有50度的提升，但这是一瞬间的，练得久了就会使清晰的视觉被眼部肌肉记忆，从而使视力上升一个台阶），反复练习5-10分钟即可。 </p>
+<p>5、 若感觉眼镜干涩发困，则练习A 的做法，或滴适量眼药水，在光线较暗处闭眼休息几分钟OK。 </p>
+<p>（以上运动原则上次数不限，如果有半小时可以完整做一次，也可以利用等车、排队等零散时间做做其中的一两项，长期坚持，多多益善，最好能保证每天上下午各一遍！~） </p>
+<h5 id="三、平时注意用眼"><a href="#三、平时注意用眼" class="headerlink" title="三、平时注意用眼"></a>三、平时注意用眼</h5><p>A． 不在强光下看书或者做视力恢复训练。 </p>
+<p>B． 多看窗外绿色植物，绿色波长适合养眼。 </p>
+<p>C． 电脑亮度不要太高太刺眼，在眼睛舒适的前提下尽量调低一格！ </p>
+<p>D． 平时上人人&amp;QQ时，每小时休息几分钟很重要！可以一边眨眼，一边深呼吸，有条件多做，没条件也要创造条件。</p>
+<h5 id="四、偏方一剂"><a href="#四、偏方一剂" class="headerlink" title="四、偏方一剂"></a>四、偏方一剂</h5><p><img src="/image/v2-2bf761e5361f009c1a0c32f306c55251_720w.webp" class="lazyload" data-srcset="/image/v2-2bf761e5361f009c1a0c32f306c55251_720w.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p> 【网上标准教程】 </p>
+<p>药方：龙眼肉+龙眼核（即带核的龙眼）、枸杞。 </p>
+<p>煮法：以上叁味适量，加水煮成茶，龙眼核不必打碎. </p>
+<p>服法：就当一般茶来喝就好，每天喝，至少连喝两个月。（没效可放弃不再喝，有效而还不满意，则应续喝。） </p>
+<p>疗效：一切跟眼睛的水晶体不正常有关的眼睛问题，包括近视，远视，散光等等。 </p>
+<p>重点：一定要用龙眼核，只用龙眼肉，则效果折半。 </p>
+<p>建议：请饭后喝，效果最佳。（因为病在头部，而饭后喝会使药性发挥在头部较多，也就是此方的目的。） 恢复视力方法（为了大家的眼睛，请尽量多转哈） </p>
+<p>【我的改良版】龙眼&amp;枸杞&amp;黄菊花各1&#x2F;3量，配500Ml纯净水，温和熬，每天喝两杯，早晚可在眼周围穴位均匀涂抹，效果正在尝试…… </p>
+<p>（都说了是偏方，不一定适合每个人，可以坚持一个月，看看是否有效果再决定是否坚持。） </p>
+<h5 id="五、什么时候换眼镜合适？（个人经验，可作参考）"><a href="#五、什么时候换眼镜合适？（个人经验，可作参考）" class="headerlink" title="五、什么时候换眼镜合适？（个人经验，可作参考）"></a>五、什么时候换眼镜合适？（个人经验，可作参考）</h5><p> 从第一次做恢复训练开始，到第一副眼镜换下，需要多点时间让眼睛适应，建议是3个月比较好，但也不是译成不变。换不换取决于一些标准： </p>
+<p>1、 找一张视力表，如果开始恢复训练之前，戴眼镜矫正视力处在【1.2】初始水平甚至光线好的话个别1.5也看得见，那就换一副降低100度的眼镜。第一个月两副眼镜月交替佩戴，白天或者不太需要用眼的时候尽量戴度数低的那副，晚上看不清了或者非常必要的时候再戴度数高一点的。 </p>
+<p>2、第二个月逐步适应度数低的眼镜，在坚持恢复训练过程中，视力大致经历从【0.8-1.2】提升阶段某个水平。这一阶段注重细节观察训练（手掌纹理 &amp;远处景物）， 没有更细，只有更细，在精细观察中还会有积极的心理暗示，来促进视力恢复！ </p>
+<p>3、 第三个月，顺利的话，视力开始进入【1.0-1.2】巩固阶段，这一阶段后期，大概7-10天，要注重巩固效果，多眺望远处景观或绿色植物，以达到检验巩固的效果。 </p>
+<p>三个月一轮结束后，一旦第二副眼镜可以看到1.2那一行（区分瞬间看清还是超过10S仍可以看清的稳定效果）如果是后者，那么恭喜你！成功地降下了100度，可以换一副度数更低的眼镜，进入下一论恢复训练！ </p>
+<hr>
+<p> <font color='cornflowerblue'>记得成功了一定要奖励自己一下哈！</font>不过没达到的话也没关系，及时总结调整，找出原因，是因为时间不够还是姿势不对，及时纠正，记住一定要在循序渐进中总结方法，加以完善，没有最好的方法，只有更好地持之以恒与尝试突破！有人会可能说，讲得容易，做起来哪有那么简单。六个月降300度，也就是说一个月降50度，肿么可能？但事实却是如此，有人做到了，我正在做，问问你自己——真的不可能吗？ </p>
+<p>的确，有时做起来挺二的，尤其是经常站在窗前傻乎乎地举着手皱着眉头一瞅就是半个点，不知道的还以为你从手相上看出自己苦逼的人生，彪啊……再说短期内还看不出什么效果，你还得用三五个月的坚持来验证，但当你真正坚持下来，直到摘下眼镜眼前不再模糊一片的时候——我想，你就自个儿找个角落偷着乐吧！至少我会找个人多的地儿，把换下来的七八副眼镜全部cei 了，以示庆祝！ </p>
+<p>【假期在家的做法】</p>
+<p>1、每天不管睡到几点起床，必须保证十二点之前练习一次，眼睛休息了一个整晚，上午做恢复训练，效果最好</p>
+<p>2、白天一整天，只要没事闲着，就利用间隙时间练个1、2分钟，出门极目远眺。另外，我从过年在家，白天基本不戴眼睛，看书的时候光线好点也是大概一尺的距离，只有晚上看电视、用本本 的时候戴着，总之，在不影响正常生活的情况下，能少戴则少。 </p>
+<p>3、晚上尽量不要熬夜，保证11-12点前睡觉，睡前巩固一下，工作学习一天后，眼睛容易疲劳，仅仅睡觉，还不足以很好地使眼睛得到舒展，休息。睡前可以简单地走这几步：揉眼睛——眨眼睛——转眼睛，3-5分钟最多，时间不长，但坚持下来效果很好！ </p>
+<p>4、坚持了有快一年了，方法基本也都尝试过了，要说出个重点来，我觉得自己经过筛选保留用的的方法，最重要的就是远近位移、穴位按摩和热敷眼睛，众卿可以博观而约取，总结出自己的方法，坚持下来，必见成效！！！ </p>
+<h4 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h4><p> (以下是前面提到的那位高人的原文) </p>
+<p>1、近视眼从800度降到现在的100度。我今年25岁（转）来源：白一白 的日志<a target="_blank" rel="noopener" href="http://blog.renren.com/blog/254479902/489069267">http://blog.renren.com/blog/254479902/489069267</a> </p>
+<p>2、【补充】最近看到的一篇不错的，更新一下，对眼保健穴位不是很清楚的亲们可以参考一下，希望对大家有所帮助！——《你近视吗？仅仅带隐形眼镜就够了吗？NO！！！治近视的秘方！1000度近视降到只有200度》来源： 吴钰赟 的日志 <a target="_blank" rel="noopener" href="http://blog.renren.com/share/239862711/11108769710">http://blog.renren.com/share/239862711/11108769710</a> </p>
+<hr>
+<p>我初中看的那个博客，开始训练一年以后视力恢复了，现在觉得那些专家就是sb，这个世界充满着谎言，普通人对所谓专家和权威过于迷信。   																												– 2022-03-27</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://www.360doc.com/content/16/0212/09/20833269_534020087.shtml">http://www.360doc.com/content/16/0212/09/20833269_534020087.shtml</a></p>
+</blockquote>
+<hr>
+<p>我曾度数下降过！貌似是一个暑假，天天跟我爸去田里割草，四处晃荡，也不看屏幕</p>
+<hr>
+<p>我是疫情期间回老家农村信号不好+老停电 +八点睡觉四点起床，白天和我爷去地里遛狗，回家戴眼镜头疼去医院查1400 变1275和1200了<img src="/image/v2-b62e608e405aeb33cd52830218f561ea.png" class="lazyload" data-srcset="/image/v2-b62e608e405aeb33cd52830218f561ea.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="[捂脸]"> 。<br>7月回家天天和我弟打游戏到三四点眼镜看不清了，一查又变1450，刚配了新眼镜， 8月过敏一到晚上就哮喘没辙了白天能睡就睡 结果又1200了 这几个月配了好几副眼镜<img src="/image/v2-d6d4d1689c2ce59e710aa40ab81c8f10.png" class="lazyload" data-srcset="/image/v2-d6d4d1689c2ce59e710aa40ab81c8f10.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="[衰]"></p>
+<p>还是要养好用眼习惯呀<img src="/image/v2-0942128ebfe78f000e84339fbb745611.png" class="lazyload" data-srcset="/image/v2-0942128ebfe78f000e84339fbb745611.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="[爱]"><br>我妈是开始工作300度，做会计的，后来升官了自己不看表了现在近视直接好了。<br>我从老家回来头疼还以为我得脑癌了<img src="/image/v2-dd613c7c81599bcc3085fc855c752950.png" class="lazyload" data-srcset="/image/v2-dd613c7c81599bcc3085fc855c752950.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="[流泪]">还是我妈和我说的可能是眼镜不合适，去配了新眼镜就好了，我还不放心又去查了脑子还真没事。。。<br>我爸工作200度现在天天整期货变900了 ，每次我和我同学提起我爸900度他们都说我遗传，其实我出生的时候我爸200而已。。</p>
+<hr>
+<p>我之前也是，一个暑假不看电视（那个时候我还没有手机），开学后发现坐在后排看得清黑板了</p>
+<hr>
+<p>我也是，高三的暑假，在农村，刚搬了家，电视坏了吗修，然后手机是黑白机，啥都没得玩，近视由250度变成175了</p>
+<hr>
+
+        </div>
+    </article>
+
+      <div class="post-footer">
+        
+          <ul class="post-tag-list" itemprop="keywords"><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/%E8%BF%91%E8%A7%86%E6%81%A2%E5%A4%8D/" rel="tag">近视恢复</a><span class="post-tag-list-count">3</span></li></ul>
+        
+        
+         <ul class="post-category-list"><li class="post-category-list-item"><a class="post-category-list-link" href="/categories/%E8%BF%91%E8%A7%86%E6%81%A2%E5%A4%8D/">近视恢复</a><span class="post-category-list-count">3</span></li></ul>
+        
+        <a href="#top" class="top">返回顶部</a>
+      </div>
+
+      <!-- 图片放大 Wrap images with fancybox support -->
+      <script src="/js/wrapImage.js"></script>
+
+</div>
+
+<!-- 评论插件 -->
+<footer>
+  &copy; 2023
+  <span class="author">
+    松泓
+  </span>
+</footer>
+      <!--     <script src="https://cdn.bootcdn.net/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script> -->
+          <!-- 文章目录 -->
+          <link href="/js/tocbot/tocbot.css" rel="stylesheet">
+<script src="/js/tocbot/tocbot.min.js"></script>
+
+<script>
+  var headerEl = 'h1, h2, h3, h4, h5, h6',  //headers
+    content = '.post-detail',//文章容器
+    idArr = {};  //标题数组以确定是否增加索引id
+  //add #id
+  var option = {
+    // Where to render the table of contents.
+    tocSelector: '.toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: content,
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: headerEl,
+    scrollSmooth: true,
+    scrollSmoothOffset: 0,
+    headingsOffset: ($(window).height()),
+    positionFixedSelector: '.toc-main',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    activeLinkClass: 'is-active-link',
+    // onClick: function (e) {},
+  }
+  if ($('.toc').length > 0) {
+
+    $(content).children(headerEl).each(function () {
+      //去除空格以及多余标点
+      var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+
+      headerId = headerId.toLowerCase();
+      if (idArr[headerId]) {
+        //id已经存在
+        $(this).attr('id', headerId + '-' + idArr[headerId]);
+        idArr[headerId]++;
+      }
+      else {
+        //id未存在
+        idArr[headerId] = 1;
+        $(this).attr('id', headerId);
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      tocbot.init(option);
+      mobileTocClick();
+    });
+
+  }
+
+  window.tocScrollFn = function () {
+    return bamboo.throttle(function () {
+      findHeadPosition();
+    }, 100)()
+  }
+  window.addEventListener('scroll', tocScrollFn);
+
+  const findHeadPosition = function (top) {
+    if ($('.toc-list').length <= 0) {
+      return false;
+    }
+    setTimeout(() => {  // or DOMContentLoaded
+      autoScrollToc();
+    }, 0);
+  }
+
+  const autoScrollToc = function () {
+    const $activeItem = document.querySelector('.is-active-link');
+    const $cardToc = document.querySelector('.toc-content');
+    const activePosition = $activeItem.getBoundingClientRect().top
+    const sidebarScrollTop = $cardToc.scrollTop
+    if (activePosition > (document.documentElement.clientHeight - 100)) {
+      $cardToc.scrollTop = sidebarScrollTop + 150
+    }
+    if (activePosition < 100) {
+      $cardToc.scrollTop = sidebarScrollTop - 150
+    }
+  }
+
+  document.addEventListener('pjax:send', function () {
+    if ($('.toc').length) {
+      tocbot.destroy();
+    }
+  });
+
+  document.addEventListener('pjax:complete', function () {
+    if ($('.toc').length) {
+      tocbot.init(option);
+      mobileTocClick();
+    }
+  });
+
+  // 手机端toc按钮点击出现目录
+  const mobileTocClick = function () {
+    const $cardTocLayout = document.getElementsByClassName('toc-aside')[0];
+    const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0];
+    let right = '45px';
+    if (window.innerWidth >= 551 && window.innerWidth <= 992) {
+      right = '100px'
+    }
+    const mobileToc = {
+      open: () => {
+        $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: ' + right
+      },
+
+      close: () => {
+        $cardTocLayout.style.animation = 'toc-close .2s'
+        setTimeout(() => {
+          $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
+        }, 100)
+      }
+    }
+    document.getElementById('toc-mobile-btn').addEventListener('click', () => {
+      if (window.getComputedStyle($cardTocLayout).getPropertyValue('opacity') === '0') mobileToc.open()
+      else mobileToc.close()
+    })
+
+    $cardToc.addEventListener('click', (e) => {
+      if (window.innerWidth < 992) { // 小于992px的时候
+        mobileToc.close()
+      }
+    })
+  }
+</script>
+
+<style>
+  .is-position-fixed {
+    position: sticky !important;
+    top: 74px;
+  }
+
+  .toc-main ul {
+    counter-reset: show-list;
+  }
+
+  .toc-main ul li::before {
+    content: counter(item)".";
+    display: block;
+    position: absolute;
+    left: 12px;
+    top: 0;
+  }
+</style>
+          <script src="/js/utils/index.js"></script>
+          <!-- 图片放大 -->
+          
+            <script src="/js/fancybox/jquery.fancybox.min.js"></script>
+          
+          <!-- 图片懒加载 -->
+          <script defer src="/libs/vanilla-lazyload-17.8.3-lazyload.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+          <!-- 渲染回到顶部按钮 -->
+            
+              
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+<div class="goTop top-btn-color" pointer>
+  <i class="fa fa-arrow-up" aria-hidden="true"></i>
+</div>
+<script src="/js/goTop.js"></script>
+
+            
+          <!-- 渲染暗黑按钮 -->
+            
+              <div class="dark">
+  <div class="dark-content">
+    <i class="fa fa-adjust" aria-hidden="true"></i>
+    <!-- <span>关灯</span> -->
+  </div>
+  
+</div>
+
+<script>
+  $(function() {
+    let isDark = JSON.parse(localStorage.getItem('dark'))  || JSON.parse('false');
+    if (isDark) {
+      $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fa fa-adjust" aria-hidden="true"></i>
+          </div>
+          `
+        );
+    }
+    $('.dark').click(function() {
+      if ($(document.body).is('.darkModel')) {
+        $(document.body).removeClass('darkModel');
+        localStorage.setItem('dark', false);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fa fa-adjust" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      } else {
+        $(document.body).addClass('darkModel');
+        localStorage.setItem('dark', true);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fa fa-adjust" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      }
+    })
+  })
+</script>
+            
+          <!-- 背景彩带 -->
+          
+    </div>
+  </body>
+</html>

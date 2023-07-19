@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="zh">
+  
+<script src="/libs/jquery.min.js"></script>
+
+  <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  
+  <title>近视恢复---其三 - 救赎之道就在其中</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  
+  <meta name="keywords" content=近视恢复>
+  
+    <meta name="description" content="欢迎你的到来">
+  
+  
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.02">
+  
+  
+    <link rel="alternate" href="/atom.xml " title="救赎之道就在其中" type="application/atom+xml">
+  
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+        
+<link rel="stylesheet" href="/js/fancybox/jquery.fancybox.min.css">
+
+    
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <script src="/js/Valine.min.1.3.10.js"></script>
+    <div class="container">
+        <div class="test">
+            
+<div class="test">
+    <ol class="breadcrumb">
+            
+<script src="/libs/jquery.min.js"></script>
+
+            
+<script src="/js/search.js"></script>
+
+            
+                <form class="site-search-form">
+                    <i class="fa fa-search" id="search-logo"><input type="text" id="local-search-input" class="st-search-input" /></i>
+                </form>
+                <div id="local-search-result" class="local-search-result-cls"></div>
+            
+            <script type="text/javascript" id="local.search.active">
+                var inputArea       = document.querySelector("#local-search-input");
+                var getSearchFile = function(){
+                    var path = "/search.xml";
+                    searchFunc(path, 'local-search-input', 'local-search-result');
+                }
+                inputArea.onfocus = function(){ getSearchFile() }
+
+                var $resetButton = $("#search-form .fa-times");
+                var $resultArea = $("#local-search-result");
+
+                inputArea.oninput = function(){ $resetButton.show(); }
+                resetSearch = function(){
+                    $resultArea.html("");
+                    document.querySelector("#search-form").reset();
+                    $resetButton.hide();
+                    $(".no-result").hide();
+                }
+                inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+                //No search result
+                $resultArea.bind("DOMNodeRemoved DOMNodeInserted", function(e) {
+                    if (!$(e.target).text()) {
+                        $(".no-result").show(100);
+                    } else {
+                        $(".no-result").hide();
+                    }
+                })
+            </script>
+
+    </ol>
+    <hr>
+</div>
+        </div>
+      
+<script src="/libs/jquery.min.js"></script>
+
+<header class="header">
+  <div class="blog-title">
+    <a href="/" class="logo">救赎之道就在其中</a>
+    <div class="subtitle">救赎</div>
+  </div>
+  <nav class="navbar">
+    <ul class="menu">
+      
+        <li class="menu-item">
+          <a href="/" class="menu-item-link">主页</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="/archives" class="menu-item-link">归档</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="/categories" class="menu-item-link">分类</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="/tags" class="menu-item-link">标签</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="/about" class="menu-item-link">🧒🏻关于我</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="/atom.xml" class="menu-item-link">RSS</a>
+        </li>
+      
+    </ul>
+  </nav>
+</header>
+
+<!-- 文章目录 -->
+<!-- 文章详情页右侧目录 -->
+
+  <div class="toc-aside">
+    <div class="toc-main">
+      <div class="toc-aside-title">
+        <i class="fa fa-bars" aria-hidden="true"></i><span>本文目录</span>
+        
+          <div class="toc-open-close">本文目录</div>
+        
+      </div>
+      <div class="toc-content">
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 手机端目录按钮 -->
+  <div id="toc-mobile-btn">
+    <i class="fa fa-bars" aria-hidden="true"></i>
+  </div>
+  <!-- js在scripts目录下的的toc.ejs里面 -->
+  
+
+  <script>
+    function openBtnClickFn () {
+      let openOrCloseBtn = $('.toc-aside .toc-aside-title .toc-open-close');
+      let open = eval('' || 'true');
+      openOrCloseBtn.click(function() {
+        if (open === true) {
+          $(".toc-aside").css({'width': 0, 'padding': 0});
+          $(".toc-content").css({'width': 0});
+          $(".toc-aside-title span, .toc-aside-title i").css({'display': 'none'});
+//           $(".posts").css({'width': '75%', 'margin': '10px auto'});
+          open = false;
+          $(".current-type").css({'display': 'none'});
+        } else {
+          $(".toc-aside").css({'width': '300px', 'padding': '0 10px'});
+          $(".toc-content").css({'width': '300px'});
+          $(".toc-aside-title span, .toc-aside-title i").css({'display': 'inline-block'});
+//           $(".posts").css({'width': '60%', 'margin-right': '10px', 'margin-left': 'calc(40% - 400px)'});
+          open = true;
+           $(".current-type").css({'display': 'block'});
+        }
+      });
+    };
+    openBtnClickFn();
+    document.addEventListener('pjax:complete', function () {
+      openBtnClickFn();
+    })
+
+  </script>
+
+<div class="current-type">
+</div>
+<div class="posts">
+
+  <div class="post-title">
+    <h1 class="article-title">近视恢复---其三</h1>
+  </div>
+
+    <span class="post-time" style="color:#646060;font-size:13px">本篇最后更新于 - 2023-07-17</span>
+  </div>
+  <div class="post-meta">
+
+    <article class="post post-detail">
+        <div class="post-content">
+            <p> <strong>一篇近视纠正指南，写的非常详细，条理清晰，近视的同学可以收藏看看，会对近视有帮助，同时也要提醒大家注意保护眼睛哟-</strong></p>
+<p><img src="/image/image-20230719174210599.png" class="lazyload" data-srcset="/image/image-20230719174210599.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20230719174210599"></p>
+<p>**文&#x2F;REMOON **</p>
+<p>简述一下整个过程：</p>
+<p>近视（尤其是高度近视），眼球会被眼周肌肉拉长（不是睫状肌拉长的，睫状肌只能纵向调节晶状体）。导致视远时，晶状体的屈光的焦点不能落在视网膜上。 </p>
+<p>但通过练习，可以有意识地控制眼周肌肉压缩眼球（主要依据是可以让眼前有一段清晰地时间，也是实现可控的唯一方法）。在掌握技巧之后，逐步降低眼镜的度数，最后能将眼球压缩回正常的水平，近视就自愈了。</p>
+<p>其实上面这一段，就是近视自愈的原理和整个过程。以下是更为详细节论述。  </p>
+<p>注意：本方法只适用于轴性近视中的单纯性近视。即眼睛屈光间质的屈折力正常，但眼轴的前后径延长，远处的光线入眼后成像于视网膜前所造成的近视，并且近视成因与遗传无关。  </p>
+<p><strong>格物篇</strong>  </p>
+<p>实际上就是技巧篇，写作格物篇更为形象些，大部分操作过程来自于我的经验，也算是一种例证吧，具体理论根据在后文会有列出。  </p>
+<p><strong>第一阶段 视觉恢复闪现</strong>  </p>
+<p>什么是视觉恢复的闪现？  </p>
+<p>《完美的视力》（贝茨主办的杂志）1923年5月写到：  </p>
+<p>问：我正在按照你的方法纠正视力和散光，有的时候，在很短的一段时间内，我的视力很好，但很快又变回老样子，这是怎么回事？  </p>
+<p>答：这就是我们所说的“视觉恢复的闪现”，这些良好视觉的闪现随着练习，会越来越频繁地出现，直至固化成习惯和稳定的恢复后视力。  </p>
+<p>可以看出，在贝茨及相关的视力恢复书籍中，这种视觉闪现只是在一个不起眼的章节里出现，并没有引起足够重视。作为一个自愈视力的亲历者，我认为视觉恢复的闪现非常重要。相关理论在后文会做出详细的解释，这章只讨论相关技巧。  </p>
+<p><strong>正确的视觉恢复的闪现技巧：</strong>  </p>
+<p>养成望远的习惯，这里指的望远是相对的：视近的情况下，即工作看书或者用电脑的时候，尽量保持在看清和看不清的临界状态，如果戴眼镜矫正视力比较好的话，就要靠在椅子上，然后找一个足够远的距离，距离所视清晰与模糊的临界为标准。</p>
+<p>外出的时候，在保证绝对安全的时候，适当望远，比如远处的山峰或者建筑。在室内的话，也尽量养成向窗外远眺的习惯。视远的环境以光线适中为宜。我一般上网和刷论坛的时候，都会把显示器屏幕调到比最暗高一格。远眺的话，尽量选择阴天，且不要在阳光非常刺眼的情况下远眺或者直视太阳，那样会加重眼睛的疲劳程度。 </p>
+<p>当习惯积累到一定程度的时候，这种视觉上的瞬间清晰现象会自然的出现。如果长时间找不到这种感觉也不要强求，现在还不到可以自由控制眼部肌肉压迫眼球的阶段，慢慢找感觉，不要过于急功近利。  </p>
+<p>望远需要说明的是，这个阶段不要摘眼镜。当然你熟练了以后，不戴眼镜也可以让眼前瞬间清晰。  </p>
+<p>视觉恢复的闪现分很多种，但只有一种是对视力自愈是有益的，其他的闪现做法可以算做作弊。  举几种作弊的情况，尽管对眼睛没有太大的伤害，但大家还是<strong>尽量避免使用以下四种“技巧”</strong> </p>
+<p> 1、眯眼，眯眼的原理是小孔成像（《EASY摘掉眼镜完美视力》有具体原理），可以使眼睛瞬间清晰，应该算是一种不良的习惯，对恢复视力没有任何益处。</p>
+<p> 2、低头直视前方。这也是一种作弊的闪现“技巧”，原理也是小孔成像。 </p>
+<p> 3、眼泪凹透镜，眼泪就会在角膜前方和眼睑之间形成天然的“凹透镜”，这也是隐形眼镜的原理。</p>
+<p> 4、压迫眼睑，即是拉眼皮，和眯眼的效果相同，但更清楚些。  </p>
+<p><strong>第二阶段 放大闪现效果阶段</strong>  </p>
+<p>此阶段目标：做到瞬间睁眼后，能够在让眼前保持一段时间的清晰。  当你有足够多的瞬间清晰闪现经历后，可以尝试放大这种感觉。这个阶段就可以进行练习了。具体做法如下：  </p>
+<p>可以先闭眼找感觉，我们都会有这样的经验，多眨眼可以让眼前稍微清晰一段时间，再一眨眼，这种清晰地感觉就没了，如果你能做到这一步，就说明你可以进入了第二阶段的练习，并尝试去延长这种感觉的时间吧。 </p>
+<p>第一步先微闭双眼，缓缓睁开。直视前方，然后双眼看着眼前的景象，快速将视线向中间靠近，就是将两眼所视焦点努力“聚焦”，（是看聚焦的物体，不是对眼，对眼“聚焦”太近了）然后你会感到额头及眼周的肌肉有很强的力量向里拉，这应该是眼部周在向里压眼球，之后会模糊一瞬间（非常短暂），接着绷住刚才有拉扯感觉的肌肉，眼前就清晰了一些（大概50度）。 </p>
+<p>熟练后，感觉会变得很轻微，比控制面部肌肉的感觉还要轻微。当然，找到这种感觉的初期眼周肌肉的感觉会强烈一些，群内的nallan在第一次找到这种感觉的时候，形容这种感觉“如同肱二头肌绷紧了一样”。可以认为是长期凝视过近，使眼周肌肉长期处于紧张状态，突然改变用力方式所致。  </p>
+<p><font color='orange'>而这种技巧，本质上就是用视远的凝视去战胜视近的凝视。  </font></p>
+<p>注意这个阶段的练习会不可避免地出现视力疲劳，眼周的肌肉会在多次练习后会感到酸痛，眼睛也会很疼，所以在练习的时候要把握好一个度，觉得视力疲劳就停止练习，休息一段时间。最好的恢复方法就是在黑暗的房间里闭上眼睛躺一会，不接触光源。</p>
+<p><strong>第三阶段 自由控制阶段</strong>  </p>
+<p>本阶段目标：能够做到不用闭眼，也可以控制眼周肌肉，让眼前瞬间清晰，且眨眼后，这种瞬间清晰的感觉不消失。  </p>
+<p>练习方法和第二阶段一样，但要做到做到能够自由控制眼部肌肉，并且不用闭眼，也可以控制眼周肌肉，让眼前瞬间清晰一段时间，并且数次眨眼也不会让这种感觉消失。我个人的经验，能够维持30-60秒的时候，就可以进入到降低眼镜度数的阶段了。  </p>
+<p>当然，随着技巧的熟练及自愈过程的延续，可以继续延长眼前的清晰时间。并将这种技巧逐步融入生活。之后就能体会到，眼睛其实也是用进废退的。  </p>
+<p>最后，不要轻易地摘下眼镜练习。或者戴上度数过低的眼镜，那样不会起到自愈的效果，只会加重视疲劳。  </p>
+<p><strong>恢复篇</strong>  </p>
+<p>到了这个阶段就可以开始降低眼镜的度数了。 </p>
+<p><strong>降低多少度数合适：</strong>  </p>
+<p>我个人经验，100-150度比较合适。之所以要150度的方式递减眼镜度数，是为了保证足够的视远能力，并考虑了眼睛的承受能力。</p>
+<p><strong>配眼镜的问题：</strong>  </p>
+<p>关于价格：在我视力自愈的过程中，一共换了6幅眼镜，去的是中等规模的眼镜店，离学校很近，所以很便宜。由于配镜次数多了，慢慢就和老板熟路了。配一副眼镜，镜片和镜框一共100元左右。需要说明的是，这是二级城市的价格。眼镜是一个暴利行业，据说一副普通眼镜的成本不到5元。  </p>
+<p>关于验光：要降度数的话，一定要清楚自己目前的视力状况，并保证验光准确，一定要去可靠的医院或眼镜店验光，验光师一定要有验光师资格证（验光师资格证主要分为中级验光员资格证和高级验光员资格证），不在不可靠的地方验光。并且只可降镜片的屈光度，其他如散光度数则不要降低。如有屈光参差（双眼的屈光状态在性质上或程度上有显著差异者称为“屈光参差”——《实用眼科学》第二版），即双眼近视度数相差较多的话，可以在恢复的过程中逐步使双眼度数接近。如我双眼原来相差50度，逐步使两镜片度数一致，我最后一幅眼镜两眼都是-1.5D即150度。  </p>
+<p>关于眼镜：不要抛弃以前用过的眼镜：低度数的眼镜会使眼睛疲劳，不可避免的会对降低远视力，如果外出或者特定工作需要良好的远视力的情况，一定要戴屈光正常的眼镜。这也是为什么我留下了那么多的眼镜原因。  </p>
+<p><strong>自愈周期和自愈过程</strong> </p>
+<p>每换一副眼镜，即降100-150度为一个周期，一个周期分为三个阶段。  </p>
+<p><strong>第一阶段，适应阶段：</strong>这个阶段算是最痛苦的，刚戴上低度数的眼镜，需要一个稳定的环境下，此时眼镜对低度数的眼镜还不适应，特别是第一个星期，很容易产生视觉疲劳，所以这个阶段可以采取和之前的眼镜适时交替使用，逐步地适应低度数的眼镜，同时视力也在逐步恢复。一般会适应一个月。  </p>
+<p><strong>第二阶段，恢复阶段：</strong>一般会持续2-3个月，坚持使用之前练习的技巧，眼前会逐步清晰。 </p>
+<p><strong>第三阶段，收尾阶段：</strong>即是最后一个月，会和第一阶段有所重叠，特点是视力恢复，一般为视力到4.7-4.8的时候。并且由于眼睛逐步适应了眼镜，恢复速度会减慢，此时就可以去眼镜店配下一幅眼镜了，再降100-150度的眼镜。 </p>
+<p><strong>场景篇</strong>  合适的练习场景：</p>
+<p><strong>场景一：电脑</strong> </p>
+<p>经验告诉我们，长时间对着电脑工作、上网会损害视力，加重眼睛疲劳。事情真的是这样么，根据我的经验，之所以长期面对电脑会造成视疲劳和视力下降，主要原因是用眼习惯的错误和显示器屏幕亮度过强所致。 </p>
+<p>如果不改变视近的习惯，即使是看非光源的实体书，也会造成视力下降。事实上，我每天几乎要面对电脑15个小时以上，甚至可以直言不讳的说，我的视力就是靠长时间面对电脑才逐渐恢复的。  </p>
+<p><strong>如何正确的使用电脑：</strong></p>
+<p><strong>1、要选择合适的显示器，一定要使用液晶显示器</strong>  </p>
+<p>首先，液晶显示器在防止辐射方面具有先天的优势，因为它根本就不存在辐射。在电磁波的防范方面，液晶显示器也有自己独特的优势，它采用了严格的密封技术将来自驱动电路的少量电磁波封闭在显示器中，而普通显示器为了散发热量的需要，必须尽可能地让内部的电路与空气接触，这样内部电路产生的电磁波也就大量地向外“泄漏”了。  </p>
+<p>其次，由于液晶显示器每一个点在收到信号后就一直保持那种色彩和亮度，恒定发光，而不象阴极射线管显示器（CRT）那样需要不断刷新亮点。因此，液晶显示器画质高而且绝对不会闪烁，把眼睛疲劳降到最低。 </p>
+<p><strong>2、要调低显示器的亮度</strong>  </p>
+<p>即使是使用液晶显示器，亮度过大也会造成视力疲劳，甚至会导致眼部的其他疾病，如角膜炎。我用的是笔记本。一般会讲显示器亮度跳到最低高一格。即越接近于白天在室内，看实体书时，书页的亮度即可。  </p>
+<p><strong>3、改变电脑的主题及软件背景</strong>  </p>
+<p>改变桌面壁纸，要选择冷色调的壁纸，越接近于黑色越好。如果你还在用windows默认的“蓝天白云绿草地”的壁纸一定要换掉。  </p>
+<p><font color='red'>系统主题也要选择冷色调的主题，黑色的最好。  </font></p>
+<p>改变外观，桌面右键&gt;属性&gt;高级外观，将对应的白色外观尽量改成灰色的。可参考下图：</p>
+<p><img src="/image/a0ef73f082025aafa84e2c2ef6edab64014f1ad6.jpg" class="lazyload" data-srcset="/image/a0ef73f082025aafa84e2c2ef6edab64014f1ad6.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p>我的工作是机械制图，每天面对着<a href="">CAD</a>类软件，由于CAD软件大部分都是黑色背景，所以也在一定程度上减轻了对眼睛的伤害。  </p>
+<p>看小说尽量选择对应的txt阅读工具，不要直接开文本文档看，可以全屏，并设置背景和字体颜色，我的设置是黑底灰字，字调大些（字号大于四号）。所用readbook的设置：</p>
+<p><img src="/image/020c82025aafa40f46ba9c38a664034f7af019d6.jpg" class="lazyload" data-srcset="/image/020c82025aafa40f46ba9c38a664034f7af019d6.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p><strong>4、面对电脑的练习方式</strong>  </p>
+<p>戴着已经降低度数的眼镜，对着电脑屏幕，找到模糊的临界点（即看清与模糊的边界），然后用压迫眼球的方法使视线清晰，持续30-60秒，放松半分钟，然后继续。练（压）得疼了就休息一会，可以望远，或者在光线暗的地方休息一段时间。通过上述的练习，可以逐步看清，最后能将眼球压缩回正常的水平，降低眼镜的度数。  </p>
+<p><strong>场景二：远眺</strong>  养成远眺的习惯，尽量选择阴天或者太阳被云挡住的时候远眺，因为长期看过强的光线会刺激眼睛造成伤害。远眺的时候练习技巧效果是最佳的，因为望远就是对眼睛最好的放松。  </p>
+<p><strong>关于习惯，不良的用眼习惯是造成近视的最根本的原因：</strong> </p>
+<p> 1、调暗显示器亮度：我一般跳到比显示器最低亮度高一格。尽量避免使用CRT显示器。 </p>
+<p> 2、改变用眼习惯，比如不要直视太阳。尽量避免用错误的姿势看书、玩掌机。尽量调低电视的亮度。 </p>
+<p> 3、注意安全，外出或上下班就不要戴着低度数的眼镜到处跑了。 </p>
+<p> 4、去医院检查自己的视力状况，如果眼底有病变。 </p>
+<p> 5、做好长期战斗的准备，过程很漫长，眼睛会更容易疲劳，如承受不了，不要强求。 </p>
+<p><strong>我的奋斗</strong>  </p>
+<p>通过个人对各种治疗近视相关理解，以及自己的实践中体会的方法，从去年3月到现在总共换了6副眼镜，随着视力的逐渐好转，所戴眼镜的度数一直是递减的，上次发帖时还戴着150度的眼镜，现在已经不戴一个月了。 </p>
+<p>每当换上一幅低度数模糊眼镜的时候，总要有一段适应期，大概一个星期吧，眼前都是一片模糊，但又有少许清晰。坐在公交车上看着眼前人们的模糊的轮廓，周围的树木快速掠过，只有太阳是真实的。 </p>
+<p>由于工作性质的原因，我曾经戴着矫正视力不高的镜片在天车上测量尺寸，并参与安装工作，长达一个月，但就在那个时候，反而是视力进展最有效率的时候。</p>
+<p>也曾经两天没有合眼，坐在副驾驶的位置上跟着司机跑车，这个时候我就会摘下眼镜，看着公路两旁的山快速从眼前掠过，从白天到黑夜，人疲劳到了极限，眼睛却得到了充分的放松。 </p>
+<p>戴上模糊眼镜第二个月的时候，基本上就不会换原来的眼镜。本人的工作是天天和电脑打交道，每天盯着电脑屏幕，闲着的时候看看小说，用txt阅读软件，字调大些，黑底灰字，慢慢地，盯屏幕的距离会越来越远，这样也不会影响到工作。 </p>
+<p>到第三个月就会很自然的了。应该说，第一个月是最痛苦的，第二个月是恢复最快的，第三个月眼前慢慢地清晰。从沉甸甸的800+度镜片瓶底般的树脂近视镜到空气，我一共用了一年4个月的时间。 </p>
+<p>当然我比较急功近利，如果恢复速度可能会比我缓慢的话，也不要急于求成。现在裸视的能力有初中<a href="">一年级</a>时候的感觉，到明年7月的时候，相信我会恢复到正常1.0以上的视力。</p>
+<p><img src="/image/4786dab44aed2e73a058dbc98a01a18b85d6fa9a.jpg" class="lazyload" data-srcset="/image/4786dab44aed2e73a058dbc98a01a18b85d6fa9a.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p>图中从左到右是近一年来我所戴过的眼镜，一共五副眼镜，其实应该是六幅，不过在换眼镜的过程中，考虑到度数高的眼镜不会再戴（平均600度），为了省钱就换掉了600度的镜片。 </p>
+<p>被换掉的镜片的眼镜是我戴了将近三年的的眼镜，左眼-6.5D度，右眼-6.75D。镜架换过两次，镜片在今年5月换275度眼镜的时候扔眼镜店了，镜片比800度的略薄吧。</p>
+<p>左一是我去年4月配的眼镜，左眼-8.25D右眼-8.5D。由于镜片太厚，就没戴几天，所以看起来很干净。镜片太厚也是我下定决心降低眼镜度数的原因之一吧。  </p>
+<p>左二是我下定决心降视力换的第一副眼镜（之前一直戴600多度的那副），左眼-4.5D度，右眼-4.75D度。从去年7月初一直戴到10月末，之后觉得视力恢复得差不多时候，就换了下一副眼镜。  </p>
+<p>左三就是换得第二副眼镜，左眼-3.5D，右眼-3.75D，这幅眼镜从去年11月一直戴到今年3月。一共戴了4个多月。  </p>
+<p>左四就是我从今年4月一直戴到9月所戴的眼镜，双眼都是275度。右一是我一个月前所戴的眼镜，双眼150度。  </p>
+<p>现在不戴眼镜了。  </p>
+<p>我戴过的最厚和最薄眼镜的对比图： </p>
+<p><img src="/image/27b29258d109b3de5cdcb88dc1bf6c81820a4cf4.jpg" class="lazyload" data-srcset="/image/27b29258d109b3de5cdcb88dc1bf6c81820a4cf4.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p>（1.5DS VS 8DS)</p>
+<p>理论篇</p>
+<p>本篇列出近视的概念、成因。以及贝茨看法。</p>
+<p>近视概念：</p>
+<p>近视（Myopia）指在调节放松的条件下，平行于视轴的平行光线通过眼球屈光系统的折射，汇聚在视网膜前。属于一种屈光不正。近视的人在看远处的物体时，不能在视网膜上清晰的成像，而在看近处的物体时，则可以看清。近视的人，通过眯起眼睛可以限制光线的入射，从而减小像差，使自己可以看得更清楚一些，myopia原来的意思是眯着眼睛。近视可以通过凹透镜来矫正，通常用屈光度来衡量屈光不正的程度，0到-3.00D属于轻度近视，-3.00到-6.00D属于中度近视，高于-6.00D的则是高度近视。高度近视眼的人因为眼轴过长而属于一些眼病的高危人群，例如视网膜脱落。</p>
+<p>按病因分</p>
+<p>⑴ 轴性近视(axial myopia):眼球的前后径明显延长的一类近视，见于大多数单纯性近视和病理性近视。</p>
+<p><img src="/image/7ed842a7d933c8955471459ddc1373f0800200c1.jpg" class="lazyload" data-srcset="/image/7ed842a7d933c8955471459ddc1373f0800200c1.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p>轴性近视（眼轴明显延长）<br>▲单纯性近视:是一类主要跟环境因素相关的近视眼，发病一般在青少年发育时期开始，且随发育停止而渐趋稳定，没有明显的遗传因素。主要特点是：发展较慢，近视度一般小于600度，矫正视力较为理想，少数有相应的眼轴延长，眼底可呈现轻度病变，但不影响其他视功能。也可以发生在早年无近视的成年人，一般有明显的诱因，如长时间的近距离工作等。</p>
+<p>▲病理性近视:是一类与遗传有关的近视眼，发病一般自幼年开始，近视程度呈进行性发展，除了屈光异常之外还合并眼其他组织的变性性病理改变。</p>
+<p>⑵屈光性近视:眼的屈光力量过强的一类近视。</p>
+<p>曲率性近视:某一屈光体的表面曲度增强、曲率半径变小而使屈光力增强所引起的近视，如圆锥角膜、球形晶体等。如下图：</p>
+<p><img src="/image/335bd933c895d1432b7939c57ef0820258af07c1-1689761926861-1.jpg" class="lazyload" data-srcset="/image/335bd933c895d1432b7939c57ef0820258af07c1-1689761926861-1.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p>曲率性近视（眼轴正常）<br>屈光指数性近视:由于房水、晶状体、玻璃体的屈光指数增高而使屈光力增强所引起的近视，如糖尿病所致晶状体改变、核性白内障等如下图：</p>
+<p><img src="/image/a8cfc895d143ad4b56219b268f025aafa60f06c1.jpg" class="lazyload" data-srcset="/image/a8cfc895d143ad4b56219b268f025aafa60f06c1.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p>屈光指数性近视（眼轴正常）</p>
+<p>我个人的一些感想：</p>
+<p>以上是相关资料以及书籍中对近视理论的诠释。我个人在自愈过程中，尝试了很多种方法，包括贝茨法以及其他松崎法相关书籍中所罗列的方法，效果并不明显。我是在自愈过程中，慢慢体会到本文开头中技巧的重要性的。而贝茨以及其他书籍中方法的最终目的，就是改变因轴性近视而拉长的眼球。所以技巧比方法重要，只要掌握了控制眼部肌肉的技巧，就可以通过自己的努力自愈近视。对于以上所述的方法和技巧，完全是我根据个人的感受写出来的。也仅能说明这种方法有理论根据，以及我这一个人的成功个例。练习这种方法一定要慎重。高度近视（600度以上，即常等效球镜超过-6.00D）大部分都会因屈光不正引发玻璃体及视网膜等器质性病变，平时要多去医院检查下眼底及眼压的情况。决定用这种方法的话，则一定要经常去医院等检查一下眼底已经眼压等情况，不要因为练习这种方法让眼睛受到伤害，那我的罪过就大了。就如某个回帖所说：“看上去很神奇，但眼睛毕竟是宝贵的东西，还是要慎重。”另：如果年龄大于25周岁，视力高于850度的高度近视的人，还是不要用这种方法了，因为近视度数越高，也越容易出现问题。</p>
+<p>相关反馈：</p>
+<p>以下是转了我之前帖子的留言：</p>
+<p>2009年12月22日 星期二 15:11 | 回复上次看到这篇文章之后，就一直按照作者的方法去做。上个月视力测试两只眼睛750，昨天去测，左眼650，右眼625.然后配了一副550和525度数的眼睛。希望坚持下去跟作者一样摆脱近视。我身边的朋友一开始都不相信我可以提高视力。所有医生就说没可能，我给他们看作者的文章，他们都说瞎写。可是，我做到了。真的相信，只要坚持，万事皆有可能。谢谢作者提供这篇文章给我。真的给了我希望。感谢。</p>
+<p>2009年12月28日</p>
+<p>补充：再简述下整个过程</p>
+<p>格物篇：<br>第一阶段 视觉恢复闪现<br>偶尔在很短的一段时间内，视力突然会清晰少许。通过正确的视觉恢复的闪现技巧使这种经验的次数增加。<br>第二阶段 放大闪现效果阶段<br>此阶段目标：做到瞬间睁眼后，能够在让眼前保持一段时间的清晰。<br>第三阶段 自由控制阶段<br>本阶段目标：能够做到不用闭眼，也可以控制眼周肌肉，让眼前瞬间清晰，且眨眼后，这种瞬间清晰的感觉不消失，并使这种状态能够维持30-60秒。</p>
+<p>完成格物篇的第三阶段之后，就可以进入到降低眼镜度数的恢复阶段了。</p>
+<p>恢复篇：<br>逐渐降低目前所戴眼镜的度数。要150度的方式递减眼镜度数。并使用上一篇学会的“视觉闪现”的技巧，即可逐渐降低度数。合适的练习场景参考场景篇所述。</p>
+<p>之后的部分是个人的经历及贝茨理论的简述和书评。</p>
+
+        </div>
+    </article>
+
+      <div class="post-footer">
+        
+          <ul class="post-tag-list" itemprop="keywords"><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/%E8%BF%91%E8%A7%86%E6%81%A2%E5%A4%8D/" rel="tag">近视恢复</a><span class="post-tag-list-count">3</span></li></ul>
+        
+        
+         <ul class="post-category-list"><li class="post-category-list-item"><a class="post-category-list-link" href="/categories/%E8%BF%91%E8%A7%86%E6%81%A2%E5%A4%8D/">近视恢复</a><span class="post-category-list-count">3</span></li></ul>
+        
+        <a href="#top" class="top">返回顶部</a>
+      </div>
+
+      <!-- 图片放大 Wrap images with fancybox support -->
+      <script src="/js/wrapImage.js"></script>
+
+</div>
+
+<!-- 评论插件 -->
+<footer>
+  &copy; 2023
+  <span class="author">
+    松泓
+  </span>
+</footer>
+      <!--     <script src="https://cdn.bootcdn.net/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script> -->
+          <!-- 文章目录 -->
+          <link href="/js/tocbot/tocbot.css" rel="stylesheet">
+<script src="/js/tocbot/tocbot.min.js"></script>
+
+<script>
+  var headerEl = 'h1, h2, h3, h4, h5, h6',  //headers
+    content = '.post-detail',//文章容器
+    idArr = {};  //标题数组以确定是否增加索引id
+  //add #id
+  var option = {
+    // Where to render the table of contents.
+    tocSelector: '.toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: content,
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: headerEl,
+    scrollSmooth: true,
+    scrollSmoothOffset: 0,
+    headingsOffset: ($(window).height()),
+    positionFixedSelector: '.toc-main',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    activeLinkClass: 'is-active-link',
+    // onClick: function (e) {},
+  }
+  if ($('.toc').length > 0) {
+
+    $(content).children(headerEl).each(function () {
+      //去除空格以及多余标点
+      var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+
+      headerId = headerId.toLowerCase();
+      if (idArr[headerId]) {
+        //id已经存在
+        $(this).attr('id', headerId + '-' + idArr[headerId]);
+        idArr[headerId]++;
+      }
+      else {
+        //id未存在
+        idArr[headerId] = 1;
+        $(this).attr('id', headerId);
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      tocbot.init(option);
+      mobileTocClick();
+    });
+
+  }
+
+  window.tocScrollFn = function () {
+    return bamboo.throttle(function () {
+      findHeadPosition();
+    }, 100)()
+  }
+  window.addEventListener('scroll', tocScrollFn);
+
+  const findHeadPosition = function (top) {
+    if ($('.toc-list').length <= 0) {
+      return false;
+    }
+    setTimeout(() => {  // or DOMContentLoaded
+      autoScrollToc();
+    }, 0);
+  }
+
+  const autoScrollToc = function () {
+    const $activeItem = document.querySelector('.is-active-link');
+    const $cardToc = document.querySelector('.toc-content');
+    const activePosition = $activeItem.getBoundingClientRect().top
+    const sidebarScrollTop = $cardToc.scrollTop
+    if (activePosition > (document.documentElement.clientHeight - 100)) {
+      $cardToc.scrollTop = sidebarScrollTop + 150
+    }
+    if (activePosition < 100) {
+      $cardToc.scrollTop = sidebarScrollTop - 150
+    }
+  }
+
+  document.addEventListener('pjax:send', function () {
+    if ($('.toc').length) {
+      tocbot.destroy();
+    }
+  });
+
+  document.addEventListener('pjax:complete', function () {
+    if ($('.toc').length) {
+      tocbot.init(option);
+      mobileTocClick();
+    }
+  });
+
+  // 手机端toc按钮点击出现目录
+  const mobileTocClick = function () {
+    const $cardTocLayout = document.getElementsByClassName('toc-aside')[0];
+    const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0];
+    let right = '45px';
+    if (window.innerWidth >= 551 && window.innerWidth <= 992) {
+      right = '100px'
+    }
+    const mobileToc = {
+      open: () => {
+        $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: ' + right
+      },
+
+      close: () => {
+        $cardTocLayout.style.animation = 'toc-close .2s'
+        setTimeout(() => {
+          $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
+        }, 100)
+      }
+    }
+    document.getElementById('toc-mobile-btn').addEventListener('click', () => {
+      if (window.getComputedStyle($cardTocLayout).getPropertyValue('opacity') === '0') mobileToc.open()
+      else mobileToc.close()
+    })
+
+    $cardToc.addEventListener('click', (e) => {
+      if (window.innerWidth < 992) { // 小于992px的时候
+        mobileToc.close()
+      }
+    })
+  }
+</script>
+
+<style>
+  .is-position-fixed {
+    position: sticky !important;
+    top: 74px;
+  }
+
+  .toc-main ul {
+    counter-reset: show-list;
+  }
+
+  .toc-main ul li::before {
+    content: counter(item)".";
+    display: block;
+    position: absolute;
+    left: 12px;
+    top: 0;
+  }
+</style>
+          <script src="/js/utils/index.js"></script>
+          <!-- 图片放大 -->
+          
+            <script src="/js/fancybox/jquery.fancybox.min.js"></script>
+          
+          <!-- 图片懒加载 -->
+          <script defer src="/libs/vanilla-lazyload-17.8.3-lazyload.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+          <!-- 渲染回到顶部按钮 -->
+            
+              
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+<div class="goTop top-btn-color" pointer>
+  <i class="fa fa-arrow-up" aria-hidden="true"></i>
+</div>
+<script src="/js/goTop.js"></script>
+
+            
+          <!-- 渲染暗黑按钮 -->
+            
+              <div class="dark">
+  <div class="dark-content">
+    <i class="fa fa-adjust" aria-hidden="true"></i>
+    <!-- <span>关灯</span> -->
+  </div>
+  
+</div>
+
+<script>
+  $(function() {
+    let isDark = JSON.parse(localStorage.getItem('dark'))  || JSON.parse('false');
+    if (isDark) {
+      $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fa fa-adjust" aria-hidden="true"></i>
+          </div>
+          `
+        );
+    }
+    $('.dark').click(function() {
+      if ($(document.body).is('.darkModel')) {
+        $(document.body).removeClass('darkModel');
+        localStorage.setItem('dark', false);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fa fa-adjust" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      } else {
+        $(document.body).addClass('darkModel');
+        localStorage.setItem('dark', true);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fa fa-adjust" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      }
+    })
+  })
+</script>
+            
+          <!-- 背景彩带 -->
+          
+    </div>
+  </body>
+</html>
